@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "s7r66YUT1lDe/EsmiagoUayogaafBg5q8ocPJTzzG3E=",
+  "Source": "GetPatientInfo",
+  "BasePath": "_content/GetPatientInfo",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
