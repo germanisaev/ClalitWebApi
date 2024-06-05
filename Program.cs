@@ -1,3 +1,5 @@
+using GetPatientInfo;
+using GetPatientInfo.ErrorHandling;
 using GetPatientInfo.Models;
 using GetPatientInfo.Repository;
 
@@ -24,6 +26,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -35,6 +39,13 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseMiddleware<ErrorHandlingMiddleware>();
+//app.UseRouting();
+
+app.UseEndpoints(endpoints => {
+    endpoints.MapControllers();
+});
+
+//app.MapControllers();
 
 app.Run();
