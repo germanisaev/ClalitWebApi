@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 
 using System;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace GetPatientInfo.ErrorHandling;
@@ -31,7 +32,12 @@ public class ErrorHandlingMiddleware {
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-        var result = new { error = "An error occurred while processing your request."}.ToString();
+        var serviceResponse = new ServiceResponse<string> {
+            Data = null,
+            Success = false,
+            Message = "An error occurred while processing your request."
+        };
+        var result = JsonSerializer.Serialize(serviceResponse);;
 
         return context.Response.WriteAsync(result);
     }
